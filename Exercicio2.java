@@ -17,27 +17,28 @@ public class Exercicio2 {
 		carros.add(6);
 		carros.add(7);
 		
-		LinkedList<Integer> ordenada = ordernarCarros(carros);
+		LinkedList<Integer> ordenada = ordenarCarros(carros);
 		printzada(ordenada);
 		
 	}
 	
-	public static LinkedList<Integer> ordernarCarros(LinkedList<Integer> carros) {
-		
-		LinkedList<Integer> listaOrdenada = new LinkedList<>();
-		listaOrdenada.add(carros.get(0));
-		for(int j = 0; j < carros.size(); j++ ) {
-			for(int i = listaOrdenada.size(); i < carros.size(); i++) {
-				if(carros.get(i) >= listaOrdenada.get(i-1)) {
-					listaOrdenada.add(carros.get(i));
-				} else {
-					int aux = listaOrdenada.get(i-1);
-					listaOrdenada.add(i-1, carros.get(i));
-				}
+	public static LinkedList<Integer> ordenarCarros(LinkedList<Integer> carros) {
+		LinkedList<Integer> ordenada = carros;
+		for(int i = 0; i < carros.size() - 1; i++) {
+			if(ordenada.get(i) >= ordenada.get(i+1)) {
+				int aux = ordenada.get(i);
+				ordenada.set(i, ordenada.get(i+1));
+				ordenada.set(i+1, aux);
+			}
+		}
+		for(int j = 0; j < carros.size() - 1; j++ ) {
+			if(ordenada.get(j) >= ordenada.get(j+1)) {
+				ordenada = ordenarCarros(ordenada);
 			}
 		}
 		
-		return listaOrdenada;
+		
+		return ordenada;
 	}
 	
 	public static void printzada (LinkedList<Integer> lista) {
