@@ -210,3 +210,22 @@ while (rodar):
   if decisao == 2:
     rodar = False
     tocar(fila)
+
+
+### Questão 8
+#Apesar de não ser o algoritmo mais rápido, o bubble sort funciona muito bem para quantidade média de itens a serem ordenados 
+from heapq import heappop, heappush
+def ordenacaoHeap(array):
+    heap = []
+    for element in array:
+        heappush(heap, element)
+
+    ordered = []
+
+    while heap:
+        ordered.append(heappop(heap))
+
+    return ordered
+
+array = [13, 21, 15, 5, 26, 4, 17, 18, 24, 2]
+print(ordenacaoHeap(array))
